@@ -1,0 +1,71 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<head>
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-image: url('{% static "images/doctorbg.png" %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .jumbotron h5,
+    h3 {
+      text-align: center;
+    }
+
+
+    .alert {
+      margin: 0px;
+    }
+
+
+
+    .glow {
+      
+      font-size: 30px;
+      color: rgb(63, 101, 161);
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+  @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #d9dee9, 0 0 30px #d9dee9, 0 0 40px #d9dee9, 0 0 50px #d9dee9, 0 0 60px #d9dee9, 0 0 70px #d9dee9;
+      }
+
+      to {
+        text-shadow: 0 0 20px #eeeeee, 0 0 30px #fa2d2d, 0 0 40px #fa2d2d, 0 0 50px #fa2d2d, 0 0 60px #fa2d2d, 0 0 80px #fa2d2d, 0 0 100px #fa2d2d;
+      }
+    }
+  </style>
+</head>
+<br>
+<br>
+
+<div>
+  <br>
+  
+  <br><br><br><br><br>
+  <p>
+    {% if not user.is_authenticated %}
+
+  <p  style="padding-top: 50px;">
+    <a class="display-3 glow" href="/patientsignup" role="button" style="color: #1470a1;text-decoration: none;"><img src="{% static 'images/ucare.png' %}" height="60"><span><br><small>Urgent Care</small></span></a>
+  </p>
+  <br><br>
+  {% endif %}
+</div>
+
+
+
+{% endblock content %}

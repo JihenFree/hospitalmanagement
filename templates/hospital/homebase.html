@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="{% static 'images/hsign.png' %}" type="image/x-icon">
+  <link href="{% static 'style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://bootswatch.com/5/lumen/bootstrap.min.css" rel="stylesheet">
+        <link href="https://bootswatch.com/5/lumen/bootstrap.css" rel="stylesheet">
+        <link href="https://bootswatch.com/5/lumen/_variables.scss" rel="stylesheet">
+        <link href="https://bootswatch.com/5/lumen/_bootswatch.scss" rel="stylesheet">
+  <title>Hospital Management</title>
+
+</head>
+
+<body>
+ 
+  {% include "hospital/navbar.html" %}
+  {%block content%}
+
+  {%endblock content%}
+  {% include "hospital/footer.html" %}
+
+</body>
+
+
+</html>

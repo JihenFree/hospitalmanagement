@@ -1,0 +1,70 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+
+
+{% block content %}
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h4 class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center" style="padding-left: 35%;">Recent Doctors</h4>
+      </div>
+      <table class="table table-hover table-striped" id="dev-table">
+        <thead class="table-primary">
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Contact</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for d in doctors %}
+        <tr>
+          <td> {{d.get_name}}</td>
+          <td>{{d.department}}</td>
+          <td>{{d.mobile}}</td>
+          {%if d.status%}
+          <td> <span class="badge bg-primary">Permanent</span></td>
+          {% else %}
+          <td> <span class="badge bg-warning">On Hold</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="panel panel-primary col-md-5" style="margin-left:5%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h4 class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center" style="padding-left: 35%;">Recent Patients</h4>
+      </div>
+      <table class="table table-hover table-striped" id="dev-table">
+        <thead class="table-primary">
+          <tr>
+            <th>Name</th>
+            <th>Symptoms</th>
+            <th>Contact</th>
+            <th>Address</th>
+           
+
+          </tr>
+        </thead>
+        {% for p in patients %}
+        <tr>
+          <td> {{p.get_name}}</td>
+          <td>{{p.symptoms}}</td>
+          <td>{{p.mobile}}</td>
+          <td>{{p.address}}</td>
+         
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

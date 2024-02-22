@@ -1,0 +1,69 @@
+{% extends 'hospital/homebase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+ 
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Name</th>
+          <th>Profile Picture</th>
+          <th>Contact</th>
+          <th>Address</th>
+          <th>Department</th>
+          <th></th>
+          <th></th>
+         
+          
+        </tr>
+      </thead>
+      {% for d in doctors %}
+      <tr>
+
+        <td> {{d.get_name}}</td>
+        {% if d.profile_pic %}
+        <td> <img src="{% static d.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        {% else %}
+        <td><img src="static/images/doctor.png" alt="Profile Pic" height="40px" width="40px" /></td>
+        {% endif %}
+        <td>{{d.mobile}}</td>
+        <td>{{d.address}}</td>
+        <td>{{d.department}}</td>
+        {% if d.status %}
+        <td><a class="btn btn-primary btn-sm" href="{% url 'update-doctor' d.id  %}">Update</a></td>
+        <td><a class="btn btn-danger btn-sm" href="{% url 'delete-doctor-from-hospital' d.id  %}">Delete</a></td>
+        {% else %}
+        <td><a class="btn btn-success btn-sm" href="{% url 'approve-doctor' d.id  %}">Approve</a></td>
+        <td><a class="btn btn-warning btn-sm" href="{% url 'reject-doctor' d.id  %}">Reject</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+{% endblock content %}

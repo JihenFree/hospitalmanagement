@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style="background: -webkit-linear-gradient(left, #1470a1, #49c1d1);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><h2><b> Hospital Management</b></h2></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav  ml-auto">
+          {% if patient %}
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/patient-dashboard"><b>Dashboard</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/patient-view-appointment"><b>Appointments</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/patient-discharge"><b>Discharge</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+          </li>
+          {% elif admin %}
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/admin-appointment"><b>Appointment</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/admin-patient"><b>Patient</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/admin-view-doctor"><b>Doctor</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+          </li>
+          {% elif doc %}
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/doctor-patient"><b>Patient</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/doctor-appointment"><b>Appointments</b></a>
+          </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+          </li>
+          
+          {% elif user.is_authenticated %}
+          <li class="nav-item">
+           
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/patientlogin"><b>Patient</b>
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/doctorlogin"><b>Doctor</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/adminlogin">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactus"><b>Contact us</b></a>
+          </li>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+  
+  
+
+
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+{% block content %}
+<div style="padding-left: 60px;padding-top: 20px;height: 600px;
+flex-direction: column;
+flex-wrap: wrap;
+display: flex;">
+<div class="card text-white bg-info mb-3" style="display: fit-content;max-width: 20rem;margin: 5px 5px; ">
+    <div class="card-header"> <h5>Patient name :</h5> <h3><b>{{request.user.first_name}}&nbsp;{{request.user.last_name}}</b></h3></div>
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+      <p class="card-text"> {% if patient.profile_pic %}
+        <img src="{% static patient.profile_pic.url %}" alt="Profile Pic" style="max-width: 200px">
+                      {% else %}
+                      <img src="static/images/patient.jpg" alt="" style="max-width: 200px">
+                      {% endif %}</p>
+    
+  
+      <p class="card-text">  <h4>Symptoms:</h4> <h5>{{symptoms}}</h5>
+        <h4>Admit Date:</h4>
+        <h5>{{admitDate}}</h5>
+          
+       </p>
+    </div>
+  </div>
+  <div class="card text-white bg-primary mb-3" style="display: fit-content;max-width: 20rem;margin: 5px 5px; ">
+    <div class="card-header"> <h3>Doctor </h3> </div>
+    <div class="card-body">
+     
+       <p class="card-text"> {% if doctor.profile_pic %}
+        <img src="{% static doctor.profile_pic.url %}" alt="Profile Pic" style="max-width: 200px">
+                      {% else %}
+                      <img src="static/images/doctor.png" alt="" style="max-width: 200px">
+                      {% endif %}</p>
+   
+  </div>
+
+    <div class="card-body">
+      <p class="card-text"> <span><h4> Department: &nbsp; {{doctorDepartment}}</h4></span>
+      </p>
+      <p class="card-text"> <span><h4> Name: &nbsp; {{doctorName}}</h4></span>
+      </p>
+    
+       <p class="card-text"> <span><h5> Address: &nbsp; {{doctorAddress}}</h5></span>
+       </p>
+      
+      <p class="card-text">  <h5>Mobile:&nbsp; {{doctorMobile}}</h5>
+       </p>
+    
+  </div>
+</div>
+
+</div>
+{% endblock content %}
