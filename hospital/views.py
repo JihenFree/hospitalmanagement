@@ -98,7 +98,7 @@ def patient_signup_view(request):
             patient.user=user
             patient.status=True
             patient.assignedDoctorId=request.POST.get('assignedDoctorId')
-            patient=patient.save()
+            patient.save()
             my_patient_group = Group.objects.get_or_create(name='PATIENT')
             my_patient_group[0].user_set.add(user)
         return HttpResponseRedirect('patientlogin')
