@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required,user_passes_test
 from datetime import datetime,timedelta,date
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from .models import User
 
 # Create your views here.
@@ -83,12 +84,15 @@ def patient_signup_view(request):
         userForm=forms.PatientUserForm(request.POST)
         patientForm=forms.PatientForm(request.POST,request.FILES)
         thisuser=request.POST["username"]
-        takenuser = User.objects.get(username=thisuser)
-        if takenuser:
-            return render(request,'hospital/patientsignup.html', {
+        try:
+            takenuser = User.objects.get(username=thisuser)
+            if takenuser:
+                return render(request,'hospital/patientsignup.html', {
                 
-                "message": "Username already exists."
-            })
+                    "message": "Username already exists."
+                })
+        except ObjectDoesNotExist:
+            pass
         if userForm.is_valid() and patientForm.is_valid():
             user=userForm.save()
             
